@@ -1,0 +1,12 @@
+<h2>Add a new celebrity to the database</h2>
+<form method='POST' action="/books">
+    <input type='text' name='title' placeholder="title" autocomplete="off">
+    <input type='text' name='description' placeholder="description" autocomplete="off">
+    <input type='number' name='rating' placeholder="rating" autocomplete="off">
+    <select name="author" id="author">
+        {{#each authors}}
+        <option>{{this.firstName}} {{this.lastName}}</option>
+        {{/each}}
+    </select>
+    <button type="submit">Submit</button>
+</form>
