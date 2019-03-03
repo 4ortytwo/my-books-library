@@ -6,6 +6,12 @@ const bookSchema = new Schema ({
     description: String, 
     author: {type: Schema.Types.ObjectId, ref: 'authors'},
     rating: Number,
+    reviews: [
+        {
+            user: String, 
+            comments: String
+        }
+    ],
     createdAt: Date,
     updatedAt: Date
 })
