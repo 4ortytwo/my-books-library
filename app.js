@@ -6,6 +6,7 @@ var logger        = require('morgan');
 
 // TODO: connect mongoose and mongodb
 var mongoose      = require('mongoose');
+var author        = require('./models/author');
 
 mongoose.connect('mongodb://localhost/library', {useNewUrlParser: true}, (err)=> {
   if(err) console.log(err)
@@ -14,9 +15,9 @@ mongoose.connect('mongodb://localhost/library', {useNewUrlParser: true}, (err)=>
 
 // Routers
 var indexRouter   = require('./routes/index');
-var usersRouter   = require('./routes/users');
 var booksRouter   = require('./routes/books');
 var authorsRouter = require('./routes/authors');
+var usersRouter   = require('./routes/users');
 
 var app = express();
 

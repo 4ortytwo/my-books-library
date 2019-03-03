@@ -1,5 +1,6 @@
 <h1>Books</h1>
 
 {{#each books}}
-<h3><a href="books/{{this.id}}">{{this.title}}</a></h3>
+<h3><a href="/books/{{id}}">{{title}}</a></h3>
+<h2>by {{author.firstName}} {{author.lastName}}</h2>
 {{/each}}

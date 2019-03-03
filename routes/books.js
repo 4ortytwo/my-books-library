@@ -6,10 +6,28 @@ const Author        = require('../models/author')
 
 // display all books
 router.get('/', (req, res, next)=> {
-    Book.find({}).populate('author'), (err, queryResults)=> {
-        err ? res.status(500).send(err) : res.render('books', {books: queryResults});
-    });
+    Book.find({}).populate('author', Author).then(queryResults=> {
+        res.render('books', {books: queryResults});
+    }).catch(err => {
+        res.status(500).send(err)
+    })
 });
+
+// router.get('/', (req, res, next)=> {
+//     Book.find({}).then(queryResults=> {
+//         res.render('books', {books: queryResults});
+//     }).catch(err => {
+//         res.status(500).send(err)
+//     })
+// });
+router.get('/:id', (req, res, next)=> {
+    Book.findOne({'_id' : req.params.id}).populate('author', Author).then(queryResults=> {
+        res.render('book', {book: queryResults});
+    }).catch(err => {
+        res.status(500).send(err)
+    })
+});
+
 
 router.get('/create', (req, res, next)=> {
     Author.find({}, (err, authors)=> {
